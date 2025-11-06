@@ -1,0 +1,11 @@
+<%= form_with(model: post, url: post_path(post, field: "body"), method: :patch) do |form| %>
+  <div class="space-y-2">
+    <%= form.label :body, class: "block text-sm font-medium text-gray-700" %>
+    <%= form.text_area :body, rows: 4, class: "w-full border border-gray-300 rounded-md px-3 py-2 shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 resize-y" %>
+    <div class="mt-2 flex gap-2">
+      <%= form.submit "Save", class: "bg-blue-600 hover:bg-blue-700 text-white font-medium py-1 px-3 rounded-md shadow-sm transition-colors duration-200 text-sm" %>
+      <%= link_to "Cancel", post, class: "text-blue-600 hover:text-blue-800 font-medium text-sm", data: { turbo_frame: dom_id(post, "body_turbo_frame") } %>
+    </div>
+  </div>
+<% end %>
+

@@ -1,0 +1,30 @@
+<% content_for :title, "Editing post" %>
+
+<% if params[:field] == "title" %>
+  <% frame_id = dom_id(@post, "title_turbo_frame") %>
+  <%= turbo_frame_tag frame_id do %>
+    <%= render "title_form", post: @post %>
+  <% end %>
+<% elsif params[:field] == "body" %>
+  <% frame_id = dom_id(@post, "body_turbo_frame") %>
+  <%= turbo_frame_tag frame_id do %>
+    <%= render "body_form", post: @post %>
+  <% end %>
+<% else %>
+  <div class="max-w-2xl mx-auto px-4 py-8">
+    <div class="mb-8">
+      <h1 class="text-3xl font-bold text-gray-900 mb-2">Editing post</h1>
+      <p class="text-gray-600">Update your post</p>
+    </div>
+
+    <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+      <%= render "form", post: @post %>
+    </div>
+
+    <div class="mt-6 space-x-4">
+      <%= link_to "Show this post", @post, class: "text-blue-600 hover:text-blue-800 font-medium" %>
+      <span class="text-gray-400">|</span>
+      <%= link_to "Back to posts", posts_path, class: "text-blue-600 hover:text-blue-800 font-medium" %>
+    </div>
+  </div>
+<% end %>

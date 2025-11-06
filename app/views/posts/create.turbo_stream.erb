@@ -1,0 +1,6 @@
+<%= turbo_stream.prepend "posts" do %>
+  <div id="<%= dom_id @post %>" class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+    <%= render @post %>
+  </div>
+<% end %>
+<%= turbo_stream.update "new_post", "" %>
